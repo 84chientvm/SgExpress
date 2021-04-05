@@ -36,7 +36,8 @@ namespace Logictics.Service.Core
                 model.UserName = item.UserName;
                 model.Status = item.Status;
                 model.CreateDate = timestampUtil.ConvertToDatetime((Convert.ToDouble(item.CreateDate)));
-
+                model.Address = item.Address;
+                model.Phone = item.Phone;
                 ClientList.Add(model);
             }
             return ClientList;
