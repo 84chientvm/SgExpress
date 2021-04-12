@@ -270,6 +270,10 @@
             var StoreId = $("#ListStore").val();
             var SenderId = $("#ListSender").val();
             var RecipientId = $("#ListRecipient").val();
+            if (SenderId == RecipientId) {
+                alert("Sender Can Not Equals Recipient")
+                return
+            }
             var TotalWeight = $("#totalWeight").val();
             var Shipment = $("#shipment").val();
             var Note = $("#note").val();

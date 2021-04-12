@@ -1,6 +1,6 @@
 ﻿namespace Logictics.Entity.Models
 {
-    public class UserAdmin
+    public class User
     {
         public string Id { get; set; }
         public string UserName { get; set; }

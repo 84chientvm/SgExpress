@@ -17,7 +17,7 @@ namespace Logictics.DAL.Seed
             var hash = _encryptionUtil.EncodeSHA1("123456");
             var adminId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00DE");
             var clientId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00DF");
-            modelBuilder.Entity<UserAdmin>().HasData(new UserAdmin
+            modelBuilder.Entity<User>().HasData(new User
             {
                 Id = adminId.ToString(),
                 UserName = "admin",
@@ -25,7 +25,7 @@ namespace Logictics.DAL.Seed
                 PassWord = hash,
                 Status = "ACTIVE"
             });
-            modelBuilder.Entity<UserAdmin>().HasData(new UserAdmin
+            modelBuilder.Entity<User>().HasData(new User
             {
                 Id = clientId.ToString(),
                 UserName = "ChienClient",

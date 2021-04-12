@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace Logictics.Web.Areas.Admin.Controllers {
 
     [Area(Role.Admin)]
-    //[LogicticsAuthorize(Role.Admin)]
+    [LogicticsAuthorize(Role.Admin)]
     public class OrderController : Controller {
 
         #region DI
@@ -51,7 +51,7 @@ namespace Logictics.Web.Areas.Admin.Controllers {
         public ActionResult Create() {
             var listCategory = categoryProductRepo.GetAll().ToList();
             var listStore = storeRepo.GetAll().ToList();
-            var listUser = userRepo.GetAll().ToList();
+            var listUser = userRepo.GetAll().Where(x => x.Role == "CLIENT").ToList();
 
             ViewBag.ListCategory = new SelectList(listCategory, "Id", "Name");
             ViewBag.ListStore = new SelectList(listStore, "Id", "Name");

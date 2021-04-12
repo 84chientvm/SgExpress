@@ -2,12 +2,12 @@
 
 namespace Logictics.DAL.Migrations
 {
-    public partial class Default : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CategoryProductTbl",
+                name: "CategoryProduct",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -18,42 +18,28 @@ namespace Logictics.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoryProductTbl", x => x.Id);
+                    table.PrimaryKey("PK_CategoryProduct", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderDetailTbl",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    ProductCategoryId = table.Column<string>(nullable: true),
-                    ProductCode = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Quality = table.Column<int>(nullable: true),
-                    Weight = table.Column<int>(nullable: true),
-                    Price = table.Column<int>(nullable: true),
-                    OrderId = table.Column<string>(nullable: true),
-                    Status = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
-                    CreateDate = table.Column<double>(nullable: true),
-                    ModifyDate = table.Column<double>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderDetailTbl", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "OrderTbl",
+                name: "Order",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
                     StoreId = table.Column<string>(nullable: true),
+                    StoreName = table.Column<string>(nullable: true),
                     TotalWeight = table.Column<int>(nullable: false),
                     Status = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
                     CreateDate = table.Column<double>(nullable: true),
                     ModifyDate = table.Column<double>(nullable: true),
                     SenderId = table.Column<string>(nullable: true),
+                    SenderAddress = table.Column<string>(nullable: true),
+                    SenderPhone = table.Column<string>(nullable: true),
+                    SenderFullName = table.Column<string>(nullable: true),
                     RecipientId = table.Column<string>(nullable: true),
+                    RecipientFullName = table.Column<string>(nullable: true),
+                    RecipientAddress = table.Column<string>(nullable: true),
+                    RecipientPhone = table.Column<string>(nullable: true),
                     CustomerConfirmId = table.Column<string>(nullable: true),
                     Notes = table.Column<string>(nullable: true),
                     Shipment = table.Column<string>(nullable: true),
@@ -61,11 +47,33 @@ namespace Logictics.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderTbl", x => x.Id);
+                    table.PrimaryKey("PK_Order", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "StoreTbl",
+                name: "OrderDetail",
+                columns: table => new
+                {
+                    id = table.Column<string>(nullable: false),
+                    productCategoryId = table.Column<string>(nullable: true),
+                    productCategoryName = table.Column<string>(nullable: true),
+                    productCode = table.Column<string>(nullable: true),
+                    description = table.Column<string>(nullable: true),
+                    quality = table.Column<int>(nullable: true),
+                    weight = table.Column<int>(nullable: true),
+                    price = table.Column<int>(nullable: true),
+                    orderId = table.Column<string>(nullable: true),
+                    status = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
+                    createDate = table.Column<double>(nullable: true),
+                    modifyDate = table.Column<double>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderDetail", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Store",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -76,11 +84,11 @@ namespace Logictics.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StoreTbl", x => x.Id);
+                    table.PrimaryKey("PK_Store", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserAdmin",
+                name: "User",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -96,16 +104,16 @@ namespace Logictics.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserAdmin", x => x.Id);
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.InsertData(
-                table: "UserAdmin",
+                table: "User",
                 columns: new[] { "Id", "Address", "CreateDate", "FullName", "ModifyDate", "PassWord", "Phone", "Role", "Status", "UserName" },
                 values: new object[] { "69bd714f-9576-45ba-b5b7-f00649be00de", null, null, null, null, "7c4a8d9ca3762af61e59520943dc26494f8941b", null, "ADMIN", "ACTIVE", "admin" });
 
             migrationBuilder.InsertData(
-                table: "UserAdmin",
+                table: "User",
                 columns: new[] { "Id", "Address", "CreateDate", "FullName", "ModifyDate", "PassWord", "Phone", "Role", "Status", "UserName" },
                 values: new object[] { "69bd714f-9576-45ba-b5b7-f00649be00df", null, 1.0, null, null, "7c4a8d9ca3762af61e59520943dc26494f8941b", null, "CLIENT", "ACTIVE", "ChienClient" });
         }
@@ -113,19 +121,19 @@ namespace Logictics.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoryProductTbl");
+                name: "CategoryProduct");
 
             migrationBuilder.DropTable(
-                name: "OrderDetailTbl");
+                name: "Order");
 
             migrationBuilder.DropTable(
-                name: "OrderTbl");
+                name: "OrderDetail");
 
             migrationBuilder.DropTable(
-                name: "StoreTbl");
+                name: "Store");
 
             migrationBuilder.DropTable(
-                name: "UserAdmin");
+                name: "User");
         }
     }
 }

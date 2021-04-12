@@ -40,7 +40,8 @@
                                     <th>Customer Confirm</th>
                                     <th>Weight</th>
                                     <th>Sender Name</th>
-                                    <th>Phone #</th>
+                                    <th>Sender Phone</th>
+                                    <th>Sender Address</th>
                                     <th>Create Date</th>
                                     <th>Pickup Date</th>
                                     <th>Status</th>
@@ -48,8 +49,8 @@
                                     <th>Number Of DOCS</th>
                                     <th>Shipment</th>
                                     <th>Recipient Name</th>
-                                    <th>Address</th>
-                                    <th>Phone ##</th>
+                                    <th>Recipient Address</th>
+                                    <th>Recipient Phone</th>
                                     <th>Notes</th>
                                     <th>Action</th>
                                 </tr>
@@ -65,7 +66,8 @@
                                             <td>@item.CustomerConfirm</td>
                                             <th>@item.TotalWeight</th>
                                             <th>@item.SenderName</th>
-                                            <th>@item.PhoneSender</th>
+                                            <th>@item.SenderPhone</th>
+                                            <th>@item.SenderAddress</th>
                                             <td data-order='@String.Format("{0:yyyy MM dd HH:mm:ss}", item.CreateDate)'>
                                                 @String.Format("{0:dd MMM yyyy HH:mm:ss}", item.CreateDate)<br />
                                             </td>
@@ -89,27 +91,6 @@
                                     }
                                 }
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Code</th>
-                                    <th>Customer Confirm</th>
-                                    <th>Weight</th>
-                                    <th>Sender Name</th>
-                                    <th>Phone #</th>
-                                    <th>Create Date</th>
-                                    <th>Pickup Date</th>
-                                    <th>Status</th>
-                                    <th>Date of Status</th>
-                                    <th>Number Of DOCS</th>
-                                    <th>Shipment</th>
-                                    <th>Recipient Name</th>
-                                    <th>Address</th>
-                                    <th>Phone ##</th>
-                                    <th>Notes</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                     <!-- /.card-body -->

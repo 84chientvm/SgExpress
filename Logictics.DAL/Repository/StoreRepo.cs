@@ -8,11 +8,11 @@ using System.Text;
 
 namespace Logictics.DAL.Repository
 {
-    public interface IStoreRepo : IRepo<StoreTbl>
+    public interface IStoreRepo : IRepo<Store>
     {
 
     }
-    public class StoreRepo : Repo<StoreTbl>, IStoreRepo
+    public class StoreRepo : Repo<Store>, IStoreRepo
     {
         public StoreRepo(DbContextOptions<LogicticsDbContext> options) : base(options)
         {

@@ -10,10 +10,10 @@ using System.Text;
 namespace Logictics.DAL.Repository
 {
 
-    public interface IOrderRepo : IRepo<OrderTbl>
+    public interface IOrderRepo : IRepo<Order>
     { 
     }
-    public class OrderRepo : Repo<OrderTbl>, IOrderRepo
+    public class OrderRepo : Repo<Order>, IOrderRepo
     {
 
         public OrderRepo(DbContextOptions<LogicticsDbContext> options) : base(options)

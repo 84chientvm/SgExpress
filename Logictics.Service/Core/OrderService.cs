@@ -44,15 +44,13 @@ namespace Logictics.Service.Core {
             var listOrderDetail = orderDetailRepo.GetAll().ToList();
 
             foreach (var item in listOrder) {
-                //var category = listCategoryProduct.FirstOrDefault(c => c.Id == item.CategoryId);
+               
                 var store = listStore.FirstOrDefault(s => s.Id == item.StoreId);
-                var sender = listUser.FirstOrDefault(u => u.Id == item.SenderId);
-                var recipient = listUser.FirstOrDefault(u => u.Id == item.RecipientId);
                 var orderDetail = listOrderDetail.Where(o => o.orderId == item.Id);
                 var customerConfirm = listUser.FirstOrDefault(u => u.Id == item.CustomerConfirmId);
 
                 var orderVM = new OrderViewModel();
-                orderVM.MapOrderTblToOrderViewModel(item, store, sender, recipient, customerConfirm, orderDetail);
+                orderVM.MapOrderTblToOrderViewModel(item, store, customerConfirm, orderDetail);
 
                 result.Add(orderVM);
             }
@@ -61,9 +59,17 @@ namespace Logictics.Service.Core {
         }
 
         public void CreateOrder(OrderCreateModel data) {
-            OrderTbl order = new OrderTbl();
+            Order order = new Order();
+            var sender = userRepo.Get(data.SenderId);
+            var recipient = userRepo.Get(data.RecipientId);
             order.SenderId = data.SenderId;
+            order.SenderFullName = sender.FullName;
+            order.SenderPhone = sender.Phone;
+            order.SenderAddress = sender.Address;
             order.RecipientId = data.RecipientId;
+            order.RecipientFullName = recipient.FullName;
+            order.RecipientPhone = recipient.Phone;
+            order.RecipientAddress = recipient.Address;
             order.StoreId = data.StoreId;
             order.Notes = data.Note;
             order.TotalWeight = data.TotalWeight ?? 0;
@@ -71,15 +77,17 @@ namespace Logictics.Service.Core {
             order.Shipment = data.Shipment;
             order.CreateDate = TimestampStaicClass.ConvertTotimestamp(DateTime.UtcNow);
             order.ModifyDate = TimestampStaicClass.ConvertTotimestamp(DateTime.UtcNow);
-            order.PickupDate = TimestampStaicClass.ConvertTotimestamp(DateTime.Parse(data.PickupDate));
-            order.Id = Guid.NewGuid().ToString();
+            order.PickupDate = TimestampStaicClass.ConvertDateLocalTimeToTimeStamp(DateTime.Parse(data.PickupDate));
+            var dateTimeNowString = TimestampStaicClass.ConvertToString(DateTime.UtcNow).Replace("/", "");
+            var numId = TimestampStaicClass.CustomId(DateTime.Now);
+            order.Id = dateTimeNowString + numId;
 
             orderRepo.Create(order);
 
-            var listOrderdetail = new List<OrderDetailTbl>();
+            var listOrderdetail = new List<OrderDetail>();
             if (data.listOrdertail != null) {
                 foreach (var item in data.listOrdertail) {
-                    var orderdetail = new OrderDetailTbl();
+                    var orderdetail = new OrderDetail();
                     orderdetail.createDate = TimestampStaicClass.ConvertTotimestamp(DateTime.UtcNow);
                     orderdetail.modifyDate = TimestampStaicClass.ConvertTotimestamp(DateTime.UtcNow);
                     orderdetail.status = "New";
@@ -138,10 +146,10 @@ namespace Logictics.Service.Core {
 
             var listOldOrdertail = orderDetailRepo.GetListByOrderId(data.Id).ToList();
             orderDetailRepo.DeleteMulti(listOldOrdertail);
-            var listOrderdetail = new List<OrderDetailTbl>();
+            var listOrderdetail = new List<OrderDetail>();
             if (data.listOrdertail != null) {
                 foreach (var item in data.listOrdertail) {
-                    var orderdetail = new OrderDetailTbl();
+                    var orderdetail = new OrderDetail();
                     orderdetail.createDate = TimestampStaicClass.ConvertTotimestamp(DateTime.UtcNow);
                     orderdetail.modifyDate = TimestampStaicClass.ConvertTotimestamp(DateTime.UtcNow);
                     orderdetail.status = "New";

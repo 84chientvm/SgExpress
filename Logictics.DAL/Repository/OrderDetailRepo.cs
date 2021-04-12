@@ -10,11 +10,11 @@ using System.Text;
 namespace Logictics.DAL.Repository
 {
 
-    public interface IOrderDetailRepo : IRepo<OrderDetailTbl>
+    public interface IOrderDetailRepo : IRepo<OrderDetail>
     {
-        IQueryable<OrderDetailTbl> GetListByOrderId(string orderId);
+        IQueryable<OrderDetail> GetListByOrderId(string orderId);
     }
-    public class OrderDetailRepo : Repo<OrderDetailTbl>, IOrderDetailRepo
+    public class OrderDetailRepo : Repo<OrderDetail>, IOrderDetailRepo
     {
 
         public OrderDetailRepo(DbContextOptions<LogicticsDbContext> options) : base(options)
@@ -22,7 +22,7 @@ namespace Logictics.DAL.Repository
 
         }
 
-        public IQueryable<OrderDetailTbl> GetListByOrderId(string orderId)
+        public IQueryable<OrderDetail> GetListByOrderId(string orderId)
         {
             return Table.Where(x => x.orderId == orderId);
         }

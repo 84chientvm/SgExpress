@@ -49,7 +49,7 @@ namespace Logictics.Service.Core
 
         public void CreateUser(UserViewModel data)
         {
-            var user = new UserAdmin {
+            var user = new User {
                 Id = Guid.NewGuid().ToString(),
                 UserName = data.UserName,
                 Role = "CLIENT",

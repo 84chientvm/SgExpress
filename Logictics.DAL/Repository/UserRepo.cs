@@ -9,15 +9,15 @@ using System.Text;
 
 namespace Logictics.DAL.Repository
 {
-    public interface IUserRepo : IRepo<UserAdmin>
+    public interface IUserRepo : IRepo<User>
     {
-        IQueryable<UserAdmin> GetUserByUserName(string userName, string password);
+        IQueryable<User> GetUserByUserName(string userName, string password);
 
         //IEnumerable<UserAdmin> GetAllInclude();
         //UserAdmin GetInclude(int id);
 
     }
-    public class UserRepo : Repo<UserAdmin>, IUserRepo
+    public class UserRepo : Repo<User>, IUserRepo
     {
 
       
@@ -27,7 +27,7 @@ namespace Logictics.DAL.Repository
 
         }
 
-        public IQueryable<UserAdmin> GetUserByUserName(string userName, string password)
+        public IQueryable<User> GetUserByUserName(string userName, string password)
         {
             return Table.Where(x => x.UserName == userName && x.PassWord == password);
         }

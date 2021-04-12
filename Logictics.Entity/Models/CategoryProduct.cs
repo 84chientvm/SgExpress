@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Logictics.Entity.Models
 {
-    public class CategoryProductTbl
+    public class CategoryProduct
     {
         public string Id { get; set; }
         public string Name { get; set; }

@@ -25,9 +25,9 @@ namespace Logictics.DAL.EFContext
         {
             
 
-            modelBuilder.Entity<UserAdmin>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
-                entity.ToTable("UserAdmin");
+                entity.ToTable("User");
                 entity.HasKey(x => x.Id);
 
                 entity.Property(e => e.PassWord)
@@ -49,29 +49,29 @@ namespace Logictics.DAL.EFContext
             
             });
 
-            modelBuilder.Entity<OrderTbl>(entity =>
+            modelBuilder.Entity<Order>(entity =>
             {
-                entity.ToTable("OrderTbl");
+                entity.ToTable("Order");
                 entity.HasKey(x => x.Id);
                 entity.Property(e => e.Status).HasMaxLength(50).IsUnicode(false);
             });
 
-            modelBuilder.Entity<OrderDetailTbl>(entity =>
+            modelBuilder.Entity<OrderDetail>(entity =>
             {
-                entity.ToTable("OrderDetailTbl");
+                entity.ToTable("OrderDetail");
                 entity.HasKey(x => x.id);
                 entity.Property(e => e.status).HasMaxLength(50).IsUnicode(false);
             });
 
-            modelBuilder.Entity<StoreTbl>(entity =>
+            modelBuilder.Entity<Store>(entity =>
             {
-                entity.ToTable("StoreTbl");
+                entity.ToTable("Store");
                 entity.HasKey(x => x.Id);
             });
 
-            modelBuilder.Entity<CategoryProductTbl>(entity =>
+            modelBuilder.Entity<CategoryProduct>(entity =>
             {
-                entity.ToTable("CategoryProductTbl");
+                entity.ToTable("CategoryProduct");
                 entity.HasKey(x => x.Id);
             });
 
@@ -82,10 +82,10 @@ namespace Logictics.DAL.EFContext
         }
 
        
-        public virtual DbSet<UserAdmin> UserAdmin { get; set; }
-        public virtual DbSet<StoreTbl> StoreTbls { get; set; }
-        public virtual DbSet<CategoryProductTbl> CategoryProductTbls { get; set; }
-        public virtual DbSet<OrderTbl> OrderTbls { get; set; }
-        public virtual DbSet<OrderDetailTbl> OrderDetailTbls { get; set; }
+        public virtual DbSet<User> User{ get; set; }
+        public virtual DbSet<Store> Store { get; set; }
+        public virtual DbSet<CategoryProduct> CategoryProduct { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
     }
 }

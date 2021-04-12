@@ -9,10 +9,10 @@ using System.Text;
 namespace Logictics.DAL.Repository
 {
 
-    public interface ICategoryProductRepo : IRepo<CategoryProductTbl>
+    public interface ICategoryProductRepo : IRepo<CategoryProduct>
     { 
     }
-    public class CategoryProductRepo : Repo<CategoryProductTbl>, ICategoryProductRepo
+    public class CategoryProductRepo : Repo<CategoryProduct>, ICategoryProductRepo
     {
 
         public CategoryProductRepo(DbContextOptions<LogicticsDbContext> options) : base(options)

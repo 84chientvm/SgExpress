@@ -17,7 +17,7 @@ namespace Logictics.DAL.Migrations
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Logictics.Entity.Models.CategoryProductTbl", b =>
+            modelBuilder.Entity("Logictics.Entity.Models.CategoryProduct", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
@@ -36,52 +36,10 @@ namespace Logictics.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CategoryProductTbl");
+                    b.ToTable("CategoryProduct");
                 });
 
-            modelBuilder.Entity("Logictics.Entity.Models.OrderDetailTbl", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
-                    b.Property<double?>("CreateDate")
-                        .HasColumnType("double");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<double?>("ModifyDate")
-                        .HasColumnType("double");
-
-                    b.Property<string>("OrderId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProductCategoryId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("ProductCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("Quality")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
-                        .HasMaxLength(50)
-                        .IsUnicode(false);
-
-                    b.Property<int?>("Weight")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrderDetailTbl");
-                });
-
-            modelBuilder.Entity("Logictics.Entity.Models.OrderTbl", b =>
+            modelBuilder.Entity("Logictics.Entity.Models.Order", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
@@ -101,10 +59,28 @@ namespace Logictics.DAL.Migrations
                     b.Property<double?>("PickupDate")
                         .HasColumnType("double");
 
+                    b.Property<string>("RecipientAddress")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("RecipientFullName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("RecipientId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("RecipientPhone")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SenderAddress")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SenderFullName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("SenderId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SenderPhone")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Shipment")
@@ -118,15 +94,63 @@ namespace Logictics.DAL.Migrations
                     b.Property<string>("StoreId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("StoreName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<int>("TotalWeight")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderTbl");
+                    b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("Logictics.Entity.Models.StoreTbl", b =>
+            modelBuilder.Entity("Logictics.Entity.Models.OrderDetail", b =>
+                {
+                    b.Property<string>("id")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.Property<double?>("createDate")
+                        .HasColumnType("double");
+
+                    b.Property<string>("description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<double?>("modifyDate")
+                        .HasColumnType("double");
+
+                    b.Property<string>("orderId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("productCategoryId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("productCategoryName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("productCode")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("quality")
+                        .HasColumnType("int");
+
+                    b.Property<string>("status")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50)
+                        .IsUnicode(false);
+
+                    b.Property<int?>("weight")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("OrderDetail");
+                });
+
+            modelBuilder.Entity("Logictics.Entity.Models.Store", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
@@ -145,10 +169,10 @@ namespace Logictics.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StoreTbl");
+                    b.ToTable("Store");
                 });
 
-            modelBuilder.Entity("Logictics.Entity.Models.UserAdmin", b =>
+            modelBuilder.Entity("Logictics.Entity.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
@@ -190,7 +214,7 @@ namespace Logictics.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserAdmin");
+                    b.ToTable("User");
 
                     b.HasData(
                         new

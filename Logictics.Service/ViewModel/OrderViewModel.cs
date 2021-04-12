@@ -19,7 +19,8 @@ namespace Logictics.Service.ViewModel
         public string Shipment { get; set; } = "";
 
         public string SenderName { get; set; } = "";
-        public string PhoneSender { get; set; } = "";
+        public string SenderAddress { get; set; } = "";
+        public string SenderPhone { get; set; } = "";
 
         public string RecipientName { get; set; } = "";
         public string RecipientPhone { get; set; } = "";
@@ -31,7 +32,7 @@ namespace Logictics.Service.ViewModel
         public DateTime PickupDate { get; set; }
     
 
-        public bool MapOrderTblToOrderViewModel(OrderTbl order, StoreTbl store, UserAdmin sender, UserAdmin recipient, UserAdmin customer, IEnumerable<OrderDetailTbl> orderDetail)
+        public bool MapOrderTblToOrderViewModel(Order order, Store store, User customer, IEnumerable<OrderDetail> orderDetail)
         {
             try
             {
@@ -46,18 +47,18 @@ namespace Logictics.Service.ViewModel
                 this.NumberOfDOCS = orderDetail.Count();
                 this.Notes = order.Notes;
                 this.Shipment = order.Shipment;
-
-                this.SenderName = sender == null ? StringProvider.NOTFOUND : sender.FullName;
-                this.PhoneSender = sender == null ? StringProvider.NOTFOUND : sender.Phone;
-
-                this.RecipientName = recipient == null ? StringProvider.NOTFOUND : recipient.FullName;
-                this.RecipientPhone =  recipient == null ? StringProvider.NOTFOUND : recipient.Phone;
-                this.RecipientAddress =  recipient == null ? StringProvider.NOTFOUND : recipient.Address;
-
                 this.Status = order.Status;
                 this.CreateDate = TimestampStaicClass.ConvertToDatetime(order.CreateDate);
                 this.ModifyDate = TimestampStaicClass.ConvertToDatetime(order.ModifyDate);
-                this.PickupDate = TimestampStaicClass.ConvertToDatetime(order.PickupDate);
+                this.PickupDate = TimestampStaicClass.ConvertToDatetime(order.PickupDate).ToLocalTime();
+
+                this.SenderName = order.SenderFullName == null ? StringProvider.NOTFOUND : order.SenderFullName;
+                this.SenderAddress = order.SenderAddress == null ? StringProvider.NOTFOUND : order.SenderAddress;
+                this.SenderPhone = order.SenderPhone == null ? StringProvider.NOTFOUND : order.SenderPhone;
+
+                this.RecipientName = order.RecipientFullName == null ? StringProvider.NOTFOUND : order.RecipientFullName;
+                this.RecipientPhone = order.RecipientPhone == null ? StringProvider.NOTFOUND : order.RecipientPhone;
+                this.RecipientAddress = order.RecipientAddress == null ? StringProvider.NOTFOUND : order.RecipientAddress;
                 return true;
             } catch (Exception e)
             {

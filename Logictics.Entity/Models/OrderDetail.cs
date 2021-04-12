@@ -4,10 +4,11 @@ using System.Text;
 
 namespace Logictics.Entity.Models
 {
-    public class OrderDetailTbl
+    public class OrderDetail
     {
         public string id { get; set; }
         public string productCategoryId { get; set; }
+        public string productCategoryName { get; set; }
         public string productCode { get; set; }
         public string description { get; set; }
         public int? quality { get; set; }
