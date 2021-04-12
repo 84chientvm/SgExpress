@@ -51,84 +51,141 @@
     <!-- Page loader End -->
 
 
-
-    <header class="wow fadeInDown">
-        <div class="top-bar d-flex align-items-center text-md-left">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <i class="icofont-google-map"></i>  3020 ButternutlnRivera beach Fl 33410
-                    </div>
-                    <div class="col-md-auto">
-                        <span class="mr-3"><i class="icofont-ui-touch-phone"></i>561 468 6868</span>
-
-                        <span class="mr-3"><i class="icofont-ui-email"></i> Email Us</span>
-                        <!-- Topbar Language Dropdown Start -->
-                        <div class="dropdown d-inline-flex lang-toggle">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown" data-animations="slideInUp slideInUp slideInUp slideInUp">
-                                <img src="/client/assets/images/us.svg" alt="" class="dropdown-item-icon">
-                                <span class="d-inline-block d-lg-none">US</span>
-                                <span class="d-none d-lg-inline-block">United States</span> <i class="icofont-rounded-down"></i>
-                            </a>
-                            <div class="dropdown-menu dropdownhover-bottom dropdown-menu-right" role="menu">
-                                <a class="dropdown-item active" href="#">English</a>
-                                <a class="dropdown-item" href="#">Deutsch</a>
-                                <a class="dropdown-item" href="#">Español&lrm;</a>
-                            </div>
+    @if (@ViewBag.Title != "Home")
+    {
+        <header class="wow fadeInDown">
+            <div class="top-bar d-flex align-items-center text-md-left">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <i class="icofont-google-map"></i>  3020 ButternutlnRivera beach Fl 33410
                         </div>
-                        <!-- Topbar Language Dropdown End -->
+                        <div class="col-md-auto">
+                            <span class="mr-3"><i class="icofont-ui-touch-phone"></i>561 468 6868</span>
+
+                            <span class="mr-3"><i class="icofont-ui-email"></i> Email Us</span>
+                            <!-- Topbar Language Dropdown Start -->
+                            <div class="dropdown d-inline-flex lang-toggle">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown" data-animations="slideInUp slideInUp slideInUp slideInUp">
+                                    <img src="/client/assets/images/us.svg" alt="" class="dropdown-item-icon">
+                                    <span class="d-inline-block d-lg-none">US</span>
+                                    <span class="d-none d-lg-inline-block">United States</span> <i class="icofont-rounded-down"></i>
+                                </a>
+                                <div class="dropdown-menu dropdownhover-bottom dropdown-menu-right" role="menu">
+                                    <a class="dropdown-item active" href="#">English</a>
+                                    <a class="dropdown-item" href="#">Deutsch</a>
+                                    <a class="dropdown-item" href="#">Español&lrm;</a>
+                                </div>
+                            </div>
+                            <!-- Topbar Language Dropdown End -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Main Navigation Start -->
-        <nav class="header-fullpage navbar navbar-expand-lg">
-            <div class="container">
-                <div class="d-flex align-items-center w-100 col p-0">
-                    <a class="navbar-brand rounded-bottom light-bg" href="/Client/HomeClient">
-                        <img src="/client/assets/images/sg-express-logo-black.png" alt="">
-                    </a>
+            <!-- Main Navigation Start -->
+            <nav class="header-fullpage navbar navbar-expand-lg">
+                <div class="container">
+                    <div class="d-flex align-items-center w-100 col p-0">
+                        <a class="navbar-brand rounded-bottom light-bg" href="/Client/HomeClient">
+                            <img src="/client/assets/images/sg-express-logo-black.png" alt="">
+                        </a>
+                    </div>
+                    <!-- Topbar Request Quote Start -->
+                    <div class="d-inline-flex request-btn order-lg-last col p-0">
+                        <a class="btn-theme icon-left bg-navy-blue no-shadow align-self-center" href="#" id="search_home"><i class="icofont-search"></i><span class="d-none d-sm-inline-block"> Tra Cứu Đơn Hàng</span></a>
+                        <a class="btn-theme icon-left bg-navy-blue no-shadow align-self-center" href="#" role="button" data-toggle="modal" data-target="#request_popup"><i class="icofont-list"></i><span class="d-none d-sm-inline-block"> Báo giá</span></a>
+                        <!-- Toggle Button Start -->
+                        <button class="navbar-toggler x collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- Toggle Button End -->
+                    </div>
+                    <!-- Topbar Request Quote End -->
+
+                    <div class="collapse navbar-collapse" id="navbarCollapse" data-hover="dropdown" data-animations="slideInUp slideInUp slideInUp slideInUp">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-mob" href="/Client/HomeClient">Trang Chủ </a>
+
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-mob" href="/Client/AboutUs">Giới Thiệu</a>
+
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-mob" href="/Client/Service">Dịch Vụ </a>
+
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-mob" href="/Client/Contact">Liên Hệ</a>
+                            </li>
+
+                        </ul>
+                        <!-- Main Navigation End -->
+                    </div>
                 </div>
-                <!-- Topbar Request Quote Start -->
-                <div class="d-inline-flex request-btn order-lg-last col p-0">
-                    <a class="nav-link" href="#" id="search_home"><i class="icofont-search"></i></a>
-                    <a class="btn-theme icon-left bg-navy-blue no-shadow align-self-center" href="#" role="button" data-toggle="modal" data-target="#request_popup"><i class="icofont-list"></i><span class="d-none d-sm-inline-block"> Báo giá</span></a>
-                    <!-- Toggle Button Start -->
-                    <button class="navbar-toggler x collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- Toggle Button End -->
+            </nav>
+            <!-- Main Navigation End -->
+        </header>
+    }
+    else
+    {
+        <header class="wow fadeInDown header-sixth">
+            <!-- Main Navigation Start -->
+            <nav class="header-fullpage navbar navbar-expand-lg">
+                <div class="container">
+                    <div class="d-flex mr-auto">
+                        <a class="navbar-brand rounded-bottom light-bg" href="index.html">
+                            <img src="/client/assets/images/SG-Express-Logo-White.png" alt="">
+                        </a>
+                    </div>
+                    <!-- Topbar Request Quote Start -->
+                    <div class="d-inline-flex request-btn order-lg-last col p-0">
+                        <a class="btn-theme icon-left bg-navy-blue no-shadow align-self-center" href="#" id="search_home"><i class="icofont-search"></i><span class="d-none d-sm-inline-block"> Tra Cứu Đơn Hàng</span></a>
+                        <a class="btn-theme icon-left bg-navy-blue no-shadow align-self-center" href="#" role="button" data-toggle="modal" data-target="#request_popup"><i class="icofont-list"></i><span class="d-none d-sm-inline-block"> Báo giá</span></a>
+                        <!-- Toggle Button Start -->
+                        <button class="navbar-toggler x collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- Toggle Button End -->
+                    </div>
+                    <!-- Topbar Request Quote End -->
+
+                    <div class="collapse navbar-collapse nav-light" id="navbarCollapse" data-hover="dropdown" data-animations="slideInUp slideInUp slideInUp slideInUp">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-mob" href="/Client/HomeClient">Trang Chủ </a>
+
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-mob" href="/Client/AboutUs">Giới Thiệu</a>
+
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-mob" href="/Client/Service">Dịch Vụ </a>
+
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-mob" href="/Client/Contact">Liên Hệ</a>
+                            </li>
+
+                        </ul>
+                        <!-- Main Navigation End -->
+                    </div>
+
+
                 </div>
-                <!-- Topbar Request Quote End -->
+            </nav>
+            <!-- Main Navigation End -->
+        </header>
+       
+    }
 
-                <div class="collapse navbar-collapse" id="navbarCollapse" data-hover="dropdown" data-animations="slideInUp slideInUp slideInUp slideInUp">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="/Client/HomeClient">Trang Chủ </a>
-
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="/Client/AboutUs">Giới Thiệu</a>
-
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="/Client/Service">Dịch Vụ </a>
-
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="/Client/Contact">Liên Hệ</a>
-                        </li>
-
-                    </ul>
-                    <!-- Main Navigation End -->
-                </div>
-            </div>
-        </nav>
-        <!-- Main Navigation End -->
-    </header>
     <!-- Main Navigation End -->
     @RenderBody()
     <!-- Main Footer Start -->
@@ -237,8 +294,12 @@
     <!-- Main Footer End -->
     <!-- Search Popup Start -->
     <div class="overlay overlay-hugeinc">
+        <div class="col-md-1">
+            <a href="#" class="overlay-close link-oragne"><i class="icofont-close-line"></i><span> Close</span></a>
+        </div>
         <form action="/client/HomeClient/Search" class="form-inline mt-2 mt-md-0">
             <div class="form-inner">
+
                 <div class="form-inner-div d-inline-flex align-items-center no-gutters">
                     <div class="col-md-1">
                         <i class="icofont-search"></i>

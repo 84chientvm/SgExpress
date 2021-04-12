@@ -21,7 +21,7 @@ img{
 }
 :root {
     --primary-color: #009379;
-    --secondary-color: #ff3514;
+    --secondary-color: #fe8704;
     --main-dark-color: #666;
     --bg-light-theme: #fef9f5;
     --bg-white: #FFF;
@@ -3243,13 +3243,13 @@ footer .social-icons a:hover{
     color: var(--primary-color);
 }
 .request-btn a#search_home {
-    font-size: 1.125rem;
+   /* font-size: 1.125rem;
     color: var(--primary-color);
     padding-left: 0;
-    padding-right: 0;
+    padding-right: 0;*/
     margin: 0 1rem;
-    align-items: center;
-    display: flex;
+  /*  align-items: center;
+    display: flex;*/
 }
 /* Top Bar Right Elements */
 
